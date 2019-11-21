@@ -60,13 +60,20 @@ describe("About Applying What We Have Learnt", function() {
       }
     }
     
-    expect(sum).toBe(FILL_ME_IN);
+    expect(sum).toBe(233168);
   });
 
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)", function () {
-    var sum = FILL_ME_IN;    /* try chaining range() and reduce() */
+    var sum = _.range(1,1000) /* try chaining range() and reduce() */
+    sum = sum.reduce(function(result, x) { 
+      if (x % 3 === 0 || x % 5 === 0) {
+      return result + x;
+      } else {
+        return result;
+      }
+    }, 0); // Initialize accumulator to 0, otherwise it's first ele.
 
-    expect(233168).toBe(FILL_ME_IN);
+    expect(233168).toBe(sum);
   });
 
   /*********************************************************************************/

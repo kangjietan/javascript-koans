@@ -30,15 +30,23 @@ describe("About Applying What We Have Learnt", function() {
         }
     }
 
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    expect(productsICanEat.length).toBe(1);
   });
 
   it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", function () {
       var productsICanEat = [];
 
       /* solve using filter() & all() / any() */
+      var noNuts = products.filter(function(x) { return x.containsNuts === false; });
+      
+      var mushroomCheck = function(str) { return str === "mushrooms"};
 
-      expect(productsICanEat.length).toBe(FILL_ME_IN);
+      for (var i = 0; i < noNuts.length; i++) {
+        var placeholder = noNuts[i].ingredients;
+        var hasMushrooms = _(placeholder).any(mushroomCheck);
+        if (!hasMushrooms) productsICanEat.push(noNuts[i]);
+      }
+      expect(productsICanEat.length).toBe(1);
   });
 
   /*********************************************************************************/
